@@ -1,0 +1,17 @@
+<div>
+<%= form_tag "/users/search", :method => 'get' do %>
+  
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  
+<% end %>
+</div>
+swag swag 
+<% for user in @users %>
+	<div class="boxed">
+		<%= link_to user.login, "/users/view/#{user.id}" %>
+		<p> <%= user.company_name %> </p>
+		
+		<br>
+	</div>
+<% end %>

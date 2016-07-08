@@ -1,0 +1,11 @@
+<%= form_for(:post, :method => :post, :url =>{:action => :create}) do |form| %>
+	<div class = "p" >
+		<%=label_tag(:title)%>
+		<%=text_field_tag(:title)%> <br>
+		<%=label_tag(:content)%>
+		<%=form.text_area(:content)%> <br>
+		<%=label_tag(:image)%>
+		<%=text_field_tag(:image)%> <br>
+		<%=submit_tag('Create new Post') %>
+	</div>
+<% end%>

@@ -1,0 +1,9 @@
+<%= form_for(:user, :method => :post, :url =>{:action => :create}) do |form| %>
+	<%=label_tag(:login)%>
+	<%=text_field_tag(:login)%>
+	<%=label_tag(:password)%>
+	<%=text_field_tag(:password)%>
+	<%=label_tag('Company name')%>
+	<%=text_field_tag(:company)%>
+	<%=submit_tag('Create new Company') %>
+<% end%>

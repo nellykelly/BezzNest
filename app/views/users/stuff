@@ -1,0 +1,5 @@
+	<!--<%=# link_to "View user", "/users/#{user.id}" %>-->
+	<!--<% #if post.user.id == session[:user] %>-->
+		<!--<%=# link_to "Delete post" #,{}"/post/destroy/#{parent.id}" %>
+		<%=# link_to "Edit post"#,posts{}"/#post/#{parent.id}/edit" %>-->
+	<!--<% #end%>-->s

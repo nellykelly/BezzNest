@@ -1,0 +1,9 @@
+<p> <%= @user.login %> </p>
+<p> <%= @user.company_name %> </p>
+
+<% for post in @user.posts %>
+	<h1> <%= post.title %> </h1>
+	<p> <%= post.content %></p>
+
+<% end %>
+

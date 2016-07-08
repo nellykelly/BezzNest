@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BezzNest</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+<% flash.each do |type, message| %>
+<p> <%= type + " " + message %> </p>
+<% end %>
+<%= link_to "View Your profile", "/users/view/#{session[:user]}" %> <br>
+<%= link_to "logout", "/users/logout" %> <br>
+<%= link_to "show all users", "/users/show_user" %> <br>
+<%= link_to "Search", "/users/show_user" %> <br>
+<%= link_to "Home", "/users/home" %> <br>
+<%= link_to "messages", "/conversations" %>
+</body>
+</html>

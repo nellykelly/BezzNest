@@ -1,0 +1,46 @@
+<title>login</title>
+<h2>Welcome to BeezNest</h2>
+ 
+
+<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
+
+
+<%= form_for(:user, :method => :post, :url =>{:action => :post_login}) do |form| %>
+<div class="container">
+  <div class="profile">
+    <button class="profile__avatar" id="toggleProfile">
+  <!--   <img src="/app/assets/images/noprofil.png" alt="Avatar" /> -->
+  <%= image_tag "noprofil.png" %>
+
+    </button>
+    <div class="profile__form">
+      <div class="profile__fields">
+        <div class="field">
+          <input type="text" name="login" id="fieldUser" class="input" required pattern=.*\S.* />
+          <label for="fieldUser" class="label">Username</label>
+        </div>
+        <div class="field">
+          <input type="password" name="user[password]" id="fieldPassword" class="input" required pattern=.*\S.* />
+          <label for="fieldPassword" class="label">Password</label>
+        </div>
+        <div class="profile__footer">
+        <%=submit_tag('log in') %>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
+<% end %>
+        <%= javascript_include_tag "application" %>
+<% if false %>
+ <%= form_for(:user, :method => :post, :url =>{:action => :post_login}) do |form| %>
+
+	<%=label_tag(:login)%>
+	<%=text_field_tag(:login)%> <br>
+	<%=label_tag(:password)%>
+	<%=form.password_field (:password) %>
+	<%=submit_tag('log in') %>
+<% end%>
+<%end %>
+
+<%= link_to "Create New Buisness", "/users/new" %>
