@@ -1,25 +1,36 @@
 <p>home page</p>
 <p>posts</p>
+ <%= stylesheet_link_tag("application") %>
  <%= stylesheet_link_tag("homescreen") %>
 <% for post in @posts %>
-	<div class="boxed">
-	<h1> <%= post.title %> </h1>
-	<p> <%= post.content %></p>
-	<%= link_to post.user.login, "/users/view/#{post.user.id}" %>
-		<br>
-	</div>
-	<div> <% for comment in post.comments %>
-		<%= comment.content %>
-		<p> commented by <%= comment.user.login %></p>  
-		<% end%>
-	</div>
+	<div class="">
+	<!-- trying out new stuff untill line 11 -->
+		<div class="panel">
+			<div class="panel-default">
+				<div class="panel-heading"><h4><%= post.title %></h4></div>
+        			<div class="panel-body">
+       					<p> <%= post.content %></p>
+       					<%= link_to post.user.login, "/users/view/#{post.user.id}" %>                          
+					</div>
+			</div>
+		</div>
+		<div class="text-center"> 
+		<div class="comment">
+			<% for comment in post.comments %>
+			<%= comment.content %>
+				<p> commented by <%= comment.user.login %></p>  
+			<% end%>
+		</div>
+	
 	<%= form_for(:comment, :method => :post, :url =>"/posts/#{post.id}/comment") do |form| %>
 
-		<%=form.text_area(:comment)%>
+		<p>   <%=form.text_area(:comment)%></p>
 		<%=submit_tag('Comment') %>
-
+		
 	<% end%>
-
+	</div>
+	</div>
+	
 <% end%>
 
 	

@@ -10,13 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
+...
 
 //
- require jquery
- require jquery_ujs
- require turbolinks
- require bootstrap-spockets
- require_tree 
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require bootstrap-spockets
+//= require_tree .
 
 document.getElementById('toggleProfile').addEventListener('click', function () {
   [].map.call(document.querySelectorAll('.profile'), function(el) {

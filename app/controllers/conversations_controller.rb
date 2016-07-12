@@ -5,6 +5,8 @@ class ConversationsController < ApplicationController
 		@conversations = Conversation.all
 	end
 	def create
+		puts "hello"
+		puts params
 		if Conversation.between(params[:sender_id],params[:recipient_id]).present?
 			puts "AHHHHHHH"
 			@conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
@@ -12,7 +14,7 @@ class ConversationsController < ApplicationController
 			puts "KDFNGLKDFNGKLNDFGLKND"
 			@conversation = Conversation.create!(conversation_params)
 		end
-
+		puts "asasasasasasasasasasasasasasasasasasasasasasa"
 		redirect_to conversation_messages_path(@conversation)
 	end
 	private

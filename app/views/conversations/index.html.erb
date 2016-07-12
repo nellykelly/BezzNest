@@ -21,7 +21,7 @@
    <% @users.each do |user| %>
     <% if user.id != session[:user] %>
      <div class=”item”>
-   <%= user.login %> <%= link_to 'Message me!', conversations_path(sender_id: session[:user], recipient_id: user.id), method: 'post'%>
+   <%= user.login %> <%= link_to 'Message me!',"/conversations/convo?recipient_id=#{user.id}&sender_id=#{session[:user]}", {:sender_id=> session[:user], :recipient_id=> user.id} %>
  </div>
   <% end %>
  <% end %>
