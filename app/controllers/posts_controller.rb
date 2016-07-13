@@ -16,6 +16,8 @@ class PostsController < ApplicationController
 		photo.image = params[:post][:image]
 		
 		post.photo=photo
+		puts "_________________________________________"
+		puts post.photo
 		if post.save()
 			flash[:success] = ""
 		else

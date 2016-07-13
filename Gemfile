@@ -27,7 +27,7 @@ gem 'coffee-script-source', '1.8.0'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
-gem "paperclip", "~> 4.2"
+gem 'paperclip', "~> 3.5.3"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
