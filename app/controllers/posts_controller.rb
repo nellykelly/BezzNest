@@ -6,16 +6,16 @@ class PostsController < ApplicationController
 
 		user = User.find(session[:user])
 		post = user.posts.new
-		puts "__________________________________________"
-		puts post.methods
+		#puts "__________________________________________"
+		#puts post.methods
 		post.title = params[:title]
 		post.content = params[:post][:content]
 		
-		#photo = Photo.new
-		#photo.title = params[:post][:title]
-		#photo.image = params[:post][:image]
+		photo = Photo.new
+		photo.title = params[:post][:title]
+		photo.image = params[:post][:image]
 		
-		#post.photo = photo
+		post.photo=photo
 		if post.save()
 			flash[:success] = ""
 		else

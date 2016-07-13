@@ -24,8 +24,16 @@
 		</div>
 		meep
 		
-			<%= post.photo %>
-		
+		<%if post.photo != nil %>
+			<div class="media">
+			  <div class="media-left">
+			    <%= link_to image_tag(post.photo.image.url(:thumb), class: 'media-object'), post.photo.image.url, target: '_blank' %>
+			  </div>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= post.photo.title %></h4>
+			  </div>
+			</div>
+		<% end %>
 		moop
 	<%= form_for(:comment, :method => :post, :url =>"/posts/#{post.id}/comment") do |form| %>
 
