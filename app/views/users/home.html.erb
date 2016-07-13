@@ -14,6 +14,7 @@
 					</div>
 			</div>
 		</div>
+		
 		<div class="text-center"> 
 		<div class="comment">
 			<% for comment in post.comments %>
@@ -21,7 +22,11 @@
 				<p> commented by <%= comment.user.login %></p>  
 			<% end%>
 		</div>
-	
+		meep
+		
+			<%= post.photo %>
+		
+		moop
 	<%= form_for(:comment, :method => :post, :url =>"/posts/#{post.id}/comment") do |form| %>
 
 		<p>   <%=form.text_area(:comment)%></p>
