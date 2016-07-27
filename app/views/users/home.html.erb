@@ -1,40 +1,71 @@
-<p>home page</p>
-<p>posts</p>
- <%= stylesheet_link_tag("application") %>
+<%= stylesheet_link_tag("application") %>
  <%= stylesheet_link_tag("homescreen") %>
+
+<div class="text-center">
+<% if false %>
+<p>welcome <%= @user.login %></p>
+<% end %>
+	<h1>home page</h1>
+	<h1>posts</h1>
+
+	<div class= "padding-create-post">
+	<a href="/posts/new" class="myButton">Create Post</a>
+
+	</div>
+	<div class="padding-create-post">
+	<% if @num_new_notifications > 0 %>
+	<p>you have <%= @num_new_notifications %> new notifications</p>
+	<% end %>
+	</div>
+</div>
+ 
 <% for post in @posts %>
 	<div class="">
-	<!-- trying out new stuff untill line 11 -->
+	<!-- rendering posts -->
 		<div class="panel">
+		<div style="position:relative;left:-1px;top:-20px;">
 			<div class="panel-default">
-				<div class="panel-heading"><h4><%= post.title %></h4></div>
-        			<div class="panel-body">
+				
+					<div class="panel-heading"><h4><%= post.title %></h4></div>
+		</div>		
+        			<div class="panel-body-rounded">
        					<p> <%= post.content %></p>
-       					<%= link_to post.user.login, "/users/view/#{post.user.id}" %>                          
+       					<%= link_to post.user.login, "/users/view/#{post.user.id}" %>
+
+					</div>
+					<div class="rounded-bottom-post" style="position:absolute; left:0px; top:100px;">
+
 					</div>
 			</div>
 		</div>
-		<div class="text-center"> 
-		<div class="comment">
-			<% for comment in post.comments %>
-			<%= comment.content %>
-				<p> commented by <%= comment.user.login %></p>  
-			<% end%>
-		</div>
 	
-	<%= form_for(:comment, :method => :post, :url =>"/posts/#{post.id}/comment") do |form| %>
-
-		<p>   <%=form.text_area(:comment)%></p>
-		<%=submit_tag('Comment') %>
+		<div class="text-center"> 
+			<div class="comment">
+				<% for comment in post.comments %>
+				<%= comment.content %>
+					<p> commented by <%= comment.user.login %></p>  
+				<% end%>
+			</div>
 		
+
+		<%if post.photo != nil %>
+			<div class="media">
+			  <div class="media-left">
+			  <%= image_tag post.photo.image.url, :height => 100, :width => 125 %>
+			  </div>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= post.photo.title %></h4>
+			  </div>
+			</div>
+		<% end %>
+		
+	<%= form_for(:comment, :method => :post, :url =>"/posts/#{post.id}/comment") do |form| %>
+	<div class="comment-button">
+		<p>   <%=form.text_area(:comment)%> </p>
+		<div class="CommentButton"><%=submit_tag('Comment') %> </div>
+	</div>
 	<% end%>
 	</div>
 	</div>
 	
 <% end%>
-
-	
-
-
-<p>welcome <%= @user.login %></p>
-<p> <%= link_to "Create Post", "/posts/new" %> </p> 

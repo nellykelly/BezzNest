@@ -1,9 +1,59 @@
-<p> <%= @user.login %> </p>
-<p> <%= @user.company_name %> </p>
+<div class="text-center">
+	<div class="">
+		<% if false%>
+		<h3> <%= @user.login %> </h3>
+		<% end %>
+		<div class="company-field-name" style="position:absolute; left:100px; top:50px;">
+			<h3> <%= @user.company_name %> </h3>
+		</div>
+		<h3><%= @user.company_name %> was founded in <%= @user.year_founded %> </h3>
+	</div>
+</div>
+
+
+
+<%= stylesheet_link_tag("application") %>
+ <%= stylesheet_link_tag("homescreen") %>
 
 <% for post in @user.posts %>
-	<h1> <%= post.title %> </h1>
-	<p> <%= post.content %></p>
+<div class="panel">
+		<div style="position:relative;left:-1px;top:-20px;">
+			<div class="panel-default">
+				
+					<div class="panel-heading"><h4><%= post.title %></h4></div>
+		</div>		
+        			<div class="panel-body-rounded">
+       					<p> <%= post.content %></p>
+       					<%= link_to post.user.login, "/users/view/#{post.user.id}" %>
+
+					</div>
+					<div class="rounded-bottom-post" style="position:absolute; left:0px; top:100px;">
+
+					</div>
+					
+			</div>
+
+</div>
+	
+<% end %>
+ <% if @user.id != session[:user] %>
+ 	<%= link_to 'Message me!',"/conversations/convo?recipient_id=#{@user.id}&sender_id=#{session[:user]}" %>
+ 	<% if !(@user.friends.include? @current_user) %>
+ 		<%= link_to 'send friend request',"/users/#{@user.id}/generate_friend_request" %>
+ 	<% end %>
+
+
+
+
 
 <% end %>
-
+<div class="center-text">
+	<h1>This is your Partnership list</h1>	
+</div>
+<div class="boxed">
+	<% if @user.id == session[:user] %>
+		<% for friend in @user.friends %>
+			<%= friend.login %> <br>
+		<% end %>
+	<% end %>
+</div>

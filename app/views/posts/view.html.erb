@@ -1,0 +1,38 @@
+<div class="">
+	<!-- rendering posts -->
+		<div class="panel">
+			<div class="panel-default">
+				<div class="panel-heading"><h4><%= @post.title %></h4></div>
+        			<div class="panel-body">
+       					<p> <%= @post.content %></p>
+       					<%= link_to @post.user.login, "/users/view/#{@post.user.id}" %>                          
+					</div>
+			</div>
+		</div>
+	
+		<div class="text-center"> 
+		<div class="comment">
+			<% for comment in @post.comments %>
+			<%= comment.content %>
+				<p> commented by <%= comment.user.login %></p>  
+			<% end%>
+		</div>
+		
+
+		<%if @post.photo != nil %>
+			<div class="media">
+			  <div class="media-left">
+			  <%= image_tag @post.photo.image.url, :height => 100, :width => 125 %>
+			  </div>
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= @post.photo.title %></h4>
+			  </div>
+			</div>
+		<% end %>
+		
+	<%= form_for(:comment, :method => :post, :url =>"/posts/#{@post.id}/comment") do |form| %>
+
+		<p>    <%=form.text_area(:comment)%></p>
+		<%=submit_tag('Comment') %>
+
+		<% end %>

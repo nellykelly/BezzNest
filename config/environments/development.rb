@@ -35,7 +35,8 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
+  Paperclip.options[:command_path] = 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ImageMagick 7.0.2 Q16 (32-bit)'
+  Paperclip.options[:swallow_stderr]=false
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

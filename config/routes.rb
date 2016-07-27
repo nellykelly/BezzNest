@@ -53,12 +53,19 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-get '/conversations/convo' => 'conversations#create'
+  resources :photos, only: [:new, :create, :index, :destroy]
+  get '/conversations/convo' => 'conversations#create'
   resources :conversations do
     resources :messages
   end
+  delete 'users/delete_notification/:id' => 'users#delete_notification'
+  get 'users/:id/generate_friend_request' => 'users#generate_friend_request'
+  get 'posts/view/:id' => 'posts#view' 
+  get 'users/:id/add_friend' => 'users#add_friend'
   post 'posts/:id/comment' => 'comment#comment'
   get 'users/view/:id' => 'users#view'
   get ':controller(/:action(/:id))'
   post ':controller(/:action(/:id))'
+
+
 end
