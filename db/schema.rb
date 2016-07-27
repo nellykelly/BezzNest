@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713014509) do
+ActiveRecord::Schema.define(version: 20160719214523) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 20160713014509) do
     t.datetime "updated_at"
   end
 
+  create_table "friendships", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_user_id"
+  end
+
+  add_index "friendships", ["friend_user_id", "user_id"], name: "index_friendships_on_friend_user_id_and_user_id", unique: true
+  add_index "friendships", ["user_id", "friend_user_id"], name: "index_friendships_on_user_id_and_friend_user_id", unique: true
+
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "conversation_id"
@@ -39,6 +47,18 @@ ActiveRecord::Schema.define(version: 20160713014509) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
+  create_table "notifications", force: :cascade do |t|
+    t.boolean  "viewed"
+    t.integer  "topic_id"
+    t.string   "contents"
+    t.string   "link"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "photos", force: :cascade do |t|
     t.string   "title"
@@ -75,6 +95,7 @@ ActiveRecord::Schema.define(version: 20160713014509) do
     t.string   "company_type"
     t.integer  "size_catagory"
     t.integer  "prices"
+    t.integer  "year_founded"
   end
 
 end

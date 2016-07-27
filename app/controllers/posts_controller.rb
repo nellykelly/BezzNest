@@ -11,11 +11,14 @@ class PostsController < ApplicationController
 		post.title = params[:title]
 		post.content = params[:post][:content]
 		
-		photo = Photo.new
-		photo.title = params[:post][:title]
-		photo.image = params[:post][:image]
+		if params[:post][:title] != nil and params[:post][:image] != nil 
+			#puts "_____________________________A______A_________"
+			photo = Photo.new
+			photo.title = params[:post][:title]
+			photo.image = params[:post][:image]
 		
-		post.photo=photo
+			post.photo=photo
+		end
 		puts "_________________________________________"
 		puts post.photo
 		if post.save()
@@ -30,7 +33,9 @@ class PostsController < ApplicationController
 		 @photo = Photo.new
 	end
 
-
+	def view
+		@post = Post.find(params[:id])
+	end
 
 
 

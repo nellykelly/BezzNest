@@ -1,27 +1,36 @@
-<div class=”ui segment”>
- <h3>Mailbox</h3>
- <div class=”ui list”>
-  <div class=”item”>
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == session[:user] ||      conversation.recipient_id == session[:user] %>
-    <% if conversation.sender_id == session[:user] %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
-    <% end %>
-    <%= link_to recipient.login,   conversation_messages_path(conversation)%>
-   <% end %>
-  <% end %>
+<div class="ui segment">
+ <h3>Open Chats</h3>
+ <div class="ui list">
+  <div class="item">
+  <div class="center text">
+      <div class="panel-chats">
+        <div class="boxed">
+        <h3>Open Chats</h3>
+         <% @conversations.each do |conversation| %>
+         <% if conversation.sender_id == session[:user] ||      conversation.recipient_id == session[:user] %>
+          <% if conversation.sender_id == session[:user] %>
+            <% recipient = User.find(conversation.recipient_id) %> 
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %> 
+          <% end %>
+          <div class="boxed-open-messages">
+          <%= link_to recipient.login,   conversation_messages_path(conversation)%>
+         <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
   </div>
  </div>
 </div>
-<div class=”ui segment”>
+<div class="make-space" style="position:relative; left:-90px; top:0px;">
+</div>
  <h3>All Users</h3>
-  <div class=”ui list”>
+  <div class="text-center">
    <% @users.each do |user| %>
     <% if user.id != session[:user] %>
-     <div class=”item”>
-   <%= user.login %> <%= link_to 'Message me!',"/conversations/convo?recipient_id=#{user.id}&sender_id=#{session[:user]}", {:sender_id=> session[:user], :recipient_id=> user.id} %>
+     <div class="boxed-messages">
+   <%= user.login %> <%= link_to 'Message me!',"/conversations/convo?recipient_id=#{user.id}&sender_id=#{session[:user]}" %>
  </div>
   <% end %>
  <% end %>

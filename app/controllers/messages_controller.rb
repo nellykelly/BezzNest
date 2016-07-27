@@ -37,9 +37,23 @@ class MessagesController < ApplicationController
 	end
 
 	def create
+		puts params
 		puts "ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+		puts message_params
 		@message = @conversation.messages.new(message_params)
+		@user = User.find(session[:user])
+		if @message.conversation.sender_id == session[:user]
+			recipient_id = @message.conversation.recipient_id
+		else
+			recipient_id = @message.conversation.sender_id
+		end
+		notification = Notification.create_notification( 4,"#{@user.company_name} sent you a message","/conversations/#{@message.conversation.id}/messages", recipient_id )
+		puts notification
+		notification.save
 		if @message.save
+			redirect_to conversation_messages_path(@conversation)
+		else
+			flash[:falure] = " please enter your message"
 			redirect_to conversation_messages_path(@conversation)
 		end
 	end

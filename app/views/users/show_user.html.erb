@@ -1,17 +1,25 @@
 <div>
+
 <%= form_tag "/users/search", :method => 'get' do %>
-  
-    <%= text_field_tag :search, params[:search] %>
+
+  	<%=label_tag("Search By Company Name")%>
+    <%= text_field_tag :search_company_name %>
+    <%=label_tag("Search By Company Type")%>
+    <%= text_field_tag :search_company_type %>
     <%= submit_tag "Search", :name => nil %>
+
   
 <% end %>
 </div>
-swag swag 
+
 <% for user in @users %>
-	<div class="boxed">
-		<%= link_to user.login, "/users/view/#{user.id}" %>
-		<p> <%= user.company_name %> </p>
-		
-		<br>
+	<div class="boxed-users">
+		<div class="center-text">
+			<%= link_to user.login, "/users/view/#{user.id}" %>
+			<p> <%= user.company_name %> </p>
+			<p> <%= user.company_type %> </p> 
+			
+			<br>
+		</div>
 	</div>
 <% end %>

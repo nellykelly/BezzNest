@@ -1,0 +1,12 @@
+<p>Edit your profile</p>
+
+<%= form_for(:user, :method => :post, :url =>{:action => :edit_update}) do |form| %>
+
+	<%=label_tag('Company name')%>
+	<%=text_field_tag(:company)%>
+	<%=label_tag('Company type')%>
+	<%=text_field_tag(:company_type)%>
+	<%=label_tag('Founding year')%>
+	<%=text_field_tag(:year_founded)%>
+	<%=submit_tag('Edit your company') %>
+<% end%>

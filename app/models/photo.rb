@@ -4,5 +4,6 @@ class Photo < ActiveRecord::Base
 
 	validates_attachment :image, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
-	has_attached_file :image, style: { thumb: ["64x64#", :jpg] }           
+	has_attached_file :image, style: { :thumb => "300x300>" } 
+
 end
