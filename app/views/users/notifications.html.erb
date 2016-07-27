@@ -4,36 +4,46 @@
 </div>
 <p> <% for notification in @new_notifications %></p>
 	<% if notification.topic_id == 1 %>
-		<div class="panel">
+		<div class="panel-notification">
 			<%= notification.contents %>
 			<a href="<%= notification.link %>" class="notificationButton">View</a>
-			<a href= <%= notification.link %>><p>View here</p></a>
+			
 			<a href="<%= "/users/delete_notification/#{notification.id}" %>" class="notificationButton">Delete</a>
-			<a href= <%= "/users/delete_notification/#{notification.id}" %>><p>Delete notification</p></a>
+			
 		</div>
 
 	<% elsif notification.topic_id == 2 %>
-		<div class="panel">
+		<div class="panel-notification">
 			<%= notification.contents %>
 			<a href="<%= "/users/view/#{notification.link.gsub(/[^\d]/, '')}" %>" class="notificationButton">View User</a>
-			<a href= <%= "/users/view/#{notification.link.gsub(/[^\d]/, '')}" %>><p>View user here</p></a>
-			<a href= <%= notification.link %>><p>Accept</p></a>
-			<a href= ><p>decline</p></a>
+			
+			<a href="<%= notification.link %>" class="notificationButton">Accept</a>
+			
+			<a href="<%= "/users/delete_notification/#{notification.id}" %>>" class="notificationButton">Decline</a>
+			
 
-			<a href= <%= "/users/delete_notification/#{notification.id}" %>><p>Delete notification</p></a>
+			<a href="<%= "/users/delete_notification/#{notification.id}" %>" class="notificationButton">Delete</a>
+			
 		</div>
 
 	<% elsif notification.topic_id == 4 %>
-		<div class="panel">
-			<%= notification.contents %>
-			<a href= <%= notification.link %>><p>View message</p></a>
+		<div class="panel-notification">
+			<%= notification.contents %><br>
+			<a href="<%= notification.link %>" class="notificationButton">View</a><br>
+
+			<a href="/users/delete_notification/#{notification.id}" class="notificationButton">View</a><br>
+
 			<a href= <%= "/users/delete_notification/#{notification.id}" %>><p>Delete notification</p></a>
 		</div>
 	<% elsif notification.topic_id == 3 %>
-		<div class="panel">
+		<div class="panel-notification">
 			<%= notification.contents %>
-			<a href= <%= notification.link %>><p>View profile</p></a>
-			<a href= <%= "/users/delete_notification/#{notification.id}" %>><p>Delete notification</p></a>
+			<a href="<%= notification.link %>" class="notificationButton">View Profile</a><br>
+
+		
+
+			<a href="/users/delete_notification/#{notification.id}" class="notificationButton">Delete</a>
+			
 		</div>
 	<% end %>
 <% end %>
@@ -43,32 +53,44 @@
 <!-- this is whee we desplay old nptifications that are set to false in the controller(users/151-167) -->
 <p> <% for notification in @old_notifications %></p>
 	<% if notification.topic_id == 1 %>
-		<div class="panel">
-			<%= notification.contents %>
-			<a href= <%= notification.link %>><p>View here</p></a>
-			<a href= <%= "/users/delete_notification/#{notification.id}" %>><p>Delete notification</p></a>
+		<div class="panel-notification">
+			<%= notification.contents %> <br>
+
+			<a href="<%= notification.link %>" class="notificationButton"> View </a> <br>
+			
+
+			<a href="/users/delete_notification/#{notification.id}" class="notificationButton">Delete</a>
+			
 		</div>
 	<% elsif notification.topic_id == 2 %>
-		<div class="panel">
-			<%= notification.contents %>
-			<a href= <%= "/users/view/#{notification.link.gsub(/[^\d]/, '')}" %>><p>View user here</p></a>
-			<a href= <%= notification.link %>><p>Accept</p></a>
-			<a href=<%= "/users/delete_notification/#{notification.id}" %> ><p>decline</p></a>
+		<div class="panel-notification">
+			<%= notification.contents %><br>
+			<a href="/users/view/#{notification.link.gsub(/[^\d]/, '')}" class="notificationButton">View user</a><br>
+
+		
+			<a href="<%= notification.link %>" class="notificationButton">Accept</a><br>
+
+			<a href="/users/delete_notification/#{notification.id}" class="notificationButton">Decline</a>
+		
 		</div>
 		
 
 	<% elsif notification.topic_id == 3 %>
-		<div class="panel">
-			<%= notification.contents %>
-			<a href= <%= notification.link %>><p>View profile</p></a>
-			<a href= <%= "/users/delete_notification/#{notification.id}" %>><p>Delete notification</p></a>
+		<div class="panel-notification">
+			<%= notification.contents %><br>
+			<a href="<%= notification.link %>" class="notificationButton">View</a><br>
+
+			<a href="/users/delete_notification/#{notification.id}" class="notificationButton">Delete</a>
+
+			
 		</div>
 
 	<% elsif notification.topic_id == 4 %>
-		<div class="panel">
-			<%= notification.contents %>
-			<a href= <%= notification.link %>><p>View message</p></a>
-			<a href= <%= "/users/delete_notification/#{notification.id}" %>><p>Delete notification</p></a>
+		<div class="panel-notification">
+			<%= notification.contents %> <br>
+			<a href="<%= notification.link %>" class="notificationButton">View</a><br>
+
+			<a href="/users/delete_notification/#{notification.id}" class="notificationButton">Delete</a>
 		</div>
 		
 	<% end %>
