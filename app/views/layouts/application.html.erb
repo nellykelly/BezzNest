@@ -4,7 +4,7 @@
   <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 
   <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
-
+  <link rel="stylesheet" href="main.css" >
 
   <title>BezzNest</title>
 
@@ -31,6 +31,8 @@
 </div>
 <% end %>
 
+
+
 <% if false %>
 <ul>
   <li><a class="active" href="#home">Home</a></li>
@@ -39,8 +41,13 @@
   <li><a href="#about">About</a></li>
 </ul>
 <% end %>
-
-
+<% if false %>
+<div class="left" style="position:relative;left:0px;top:-10px;">
+  <% flash.each do |type, message| %>
+<p> <%= type + " " + message %> </p>
+<% end %>
+</div>
+<% end %>
 
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -48,7 +55,7 @@
  <%= csrf_meta_tags %>
 </head>
 <body>
-<div class= main id= "main">
+<div class= "main">
   <%= yield %>
 </div>
 <% flash.each do |type, message| %>
@@ -64,8 +71,8 @@
 <%= link_to "Noifications", "/users/notifications" %> <br>
 <%= link_to "messages", "/conversations" %>
 <% end %>
-<!--
-<footer class="footer">
+  <% if session[:user] !=nil %>
+    <footer class="footer">
       <div class="center-text">
         <div class="container">
           <p class="text-muted">Copy write BeesNest 2016</p>
@@ -73,7 +80,7 @@
         </div>
       </div>
     </footer>
--->
+  <% end %>
 </body>
 
 

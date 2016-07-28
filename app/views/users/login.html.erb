@@ -193,12 +193,12 @@
 
 
 <div class="container">
-  <div class="profile">
+  <div class="profile" style="position:relative;left:0px;top:20px;">
     <button class="profile__avatar" id="toggleProfile">
       <%= image_tag "noprofil.png", "alt" => "Avatar" %>
 
     </button>
-    <div class="profile__form">
+    <div class="profile__form" style="position:relative;left:0px;top:50px;">
       <div class="profile__fields">
         <%= form_for(:user, :method => :post, :url =>{:action => :post_login}) do |form| %>
         <div class="field">
@@ -211,6 +211,7 @@
         </div>
         <div class="profile__footer">
         <%=submit_tag('log in') %>
+        <%= link_to "Register New Buisness", "/users/new" %>
         <% end %>
         </div>
       </div>
