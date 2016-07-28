@@ -152,6 +152,7 @@ class UsersController < ApplicationController
 			flash[:success] = "friend request sent"
 		else
 			flash[:failed] = "to send request"
+		end
 		redirect_to(:controller => "users", :action => "home")
 	end
 
