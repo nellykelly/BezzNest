@@ -193,7 +193,7 @@
 
 
 <div class="container">
-  <div class="profile" style="position:relative;left:0px;top:20px;">
+  <div class="profile" style="position:relative;left:0px;top:300px;">
     <button class="profile__avatar" id="toggleProfile">
       <%= image_tag "noprofil.png", "alt" => "Avatar" %>
 
@@ -233,10 +233,12 @@
 <% end%>
 <%end %>
 
-<%= link_to "Register New Buisness", "/users/new" %>
+
 <script type="text/javascript">
 /* Simple VanillaJS to toggle class */
-
+[].map.call(document.querySelectorAll('.profile'), function(el) {
+    el.classList.toggle('profile--open');
+  });
 document.getElementById('toggleProfile').addEventListener('click', function () {
   [].map.call(document.querySelectorAll('.profile'), function(el) {
     el.classList.toggle('profile--open');

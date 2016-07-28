@@ -22,9 +22,9 @@ class PostsController < ApplicationController
 		puts "_________________________________________"
 		puts post.photo
 		if post.save()
-			flash[:success] = ""
+			flash[:success] = "Your post was created"
 		else
-			flash[:falure] = ""
+			flash[:falure] = "to create post. You have to fill out a post title and contents to post"
 		end
 		redirect_to(:controller => "users", :action => "home")
 

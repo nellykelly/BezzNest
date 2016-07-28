@@ -148,7 +148,10 @@ class UsersController < ApplicationController
 		notification = Notification.create_notification(2, "You have a partnership request from #{@user.company_name}", "", params[:id] )
 		notification.save
 		notification.link = "/users/#{session[:user]}/add_friend?notification=#{notification.id}"
-		notification.save
+		if notification.save
+			flash[:success] = "friend request sent"
+		else
+			flash[:failed] = "to send request"
 		redirect_to(:controller => "users", :action => "home")
 	end
 
