@@ -193,12 +193,12 @@
 
 
 <div class="container">
-  <div class="profile" style="position:relative;left:0px;top:20px;">
+  <div class="profile" style="position:relative;left:0px;top:300px;">
     <button class="profile__avatar" id="toggleProfile">
       <%= image_tag "noprofil.png", "alt" => "Avatar" %>
 
     </button>
-    <div class="profile__form" style="position:relative;left:0px;top:50px;">
+    <div class="profile__form" style="position:relative;left:0px;top:0px;">
       <div class="profile__fields">
         <%= form_for(:user, :method => :post, :url =>{:action => :post_login}) do |form| %>
         <div class="field">
@@ -236,6 +236,9 @@
 <%= link_to "Register New Buisness", "/users/new" %>
 <script type="text/javascript">
 /* Simple VanillaJS to toggle class */
+[].map.call(document.querySelectorAll('.profile'), function(el) {
+    el.classList.toggle('profile--open');
+  });
 
 document.getElementById('toggleProfile').addEventListener('click', function () {
   [].map.call(document.querySelectorAll('.profile'), function(el) {

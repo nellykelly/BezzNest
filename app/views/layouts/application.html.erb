@@ -56,6 +56,13 @@
 </head>
 <body>
 <div class= "main">
+  <div class="text-center">
+    <div class="flash">
+      <% flash.each do |type, message| %>
+      <p> <%= type + " " + message %> </p>
+      <% end %>
+    </div>
+  </div>
   <%= yield %>
 </div>
 <% flash.each do |type, message| %>

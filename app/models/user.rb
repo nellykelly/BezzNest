@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	def passsword_valid(password)
 		puts "yoloyoloyoloyoloyoloyoloyoloyoloyoloyoloyoloyoloyolo"
 		puts password
-		if(Digest::SHA1.hexdigest(salt.to_s + password)) == self.password_digest
+		if(Digest::SHA1.hexdigest(self.salt.to_s + password)) == self.password_digest
 			return true
 		else
 			return false

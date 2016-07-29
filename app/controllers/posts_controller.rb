@@ -22,9 +22,9 @@ class PostsController < ApplicationController
 		puts "_________________________________________"
 		puts post.photo
 		if post.save()
-			flash[:success] = ""
+			flash[:success] = "Your post was created"
 		else
-			flash[:falure] = ""
+			flash[:falure] = "Your post must have text in title and content"
 		end
 		redirect_to(:controller => "users", :action => "home")
 

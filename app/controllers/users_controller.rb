@@ -30,7 +30,9 @@ class UsersController < ApplicationController
 		user.company_type = params[:company_type]
 		salt = rand
 		user.salt = salt
-		user.password_digest = Digest::SHA1.hexdigest(salt.to_s + params[:password]) 
+		puts params
+		user.password_digest = Digest::SHA1.hexdigest(salt.to_s + params[:user][:password]) 
+
 
 		user.year_founded = params[:year_founded]
 
@@ -148,7 +150,11 @@ class UsersController < ApplicationController
 		notification = Notification.create_notification(2, "You have a partnership request from #{@user.company_name}", "", params[:id] )
 		notification.save
 		notification.link = "/users/#{session[:user]}/add_friend?notification=#{notification.id}"
-		notification.save
+		if notification.save
+			flash[:success] = "Your friend request was sent"
+		else
+			flash[:failure] = "your friend request failed to send"
+		end
 		redirect_to(:controller => "users", :action => "home")
 	end
 
