@@ -19,7 +19,6 @@
             <li><a href="#"><%= link_to "Noifications", "/users/notifications" %></a></li>
             <li><%= link_to "View Your profile", "/users/view/#{session[:user]}" %></li>
           </ul>
-
           <ul class="pull-right">
             <div class="right-nav-padding" >
               <li><%= link_to "Search", "/users/show_user" %> </li>
@@ -57,25 +56,10 @@
 </head>
 <body>
 <div class= "main">
-  <div class="colm-md-4">
-  </div>
-  <div class="colm-md-4">
-  <div class="">
-      <div class="text-center">
-        <% flash.each do |type, message| %>
-        <p> <%= type + " " + message %> </p>
-        <% end %>
-      </div>
-    </div>
   <%= yield %>
-  </div>  
-  <div class="colm-md-4">
-  </div>
 </div>
-<%if false%> 
 <% flash.each do |type, message| %>
 <p> <%= type + " " + message %> </p>
-<% end %>
 <% end %>
 <% if false %>
 <%= link_to "View Your profile", "/users/view/#{session[:user]}" %> <br>
@@ -92,7 +76,7 @@
       <div class="center-text">
         <div class="container">
           <p class="text-muted">Copy write BeesNest 2016</p>
-          <p class="text-muted">If you have any problems please contact koskela.nelson@gmail.com</p>
+          <p class="text-muted">If you have any problems please contact </p>
         </div>
       </div>
     </footer>
